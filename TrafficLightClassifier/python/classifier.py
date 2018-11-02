@@ -86,7 +86,7 @@ def greenBrightness(image):
     #Average Saturation
     sat = int(np.sum(hsv[:,:,1]) / 512 * 1.3)
 
-    #Lower Red Hue Range
+    #Green Hue Range
     lowerBottom = np.array([70,sat,140])
     lowerTop = np.array([100, 255, 255])
     lowerMask = cv2.inRange(hsv, lowerBottom, lowerTop)
