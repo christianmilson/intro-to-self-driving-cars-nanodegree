@@ -97,15 +97,11 @@ def greenBrightness(image):
     #Return brightess feauture
     return float(np.sum(blur) / 512)
 
-# Standardize all training images
-STANDARDIZED_LIST = standardize(IMAGE_LIST)
-random.shuffle(STANDARDIZED_LIST)
 
 def estimate_label(image):
 
     green = greenBrightness(image)
     red = redBrightness(image)
-    yellow = redBrightness(image)
     #If Brightness Feature detects more red than green. It returns a red estimation.
     if red > green:
         return [1,0,0]
@@ -144,6 +140,9 @@ def get_misclassified_images(test_images):
     # Return the list of misclassified [image, predicted_label, true_label] values
     return misclassified_images_labels
 
+# Standardize all training images
+STANDARDIZED_LIST = standardize(IMAGE_LIST)
+random.shuffle(STANDARDIZED_LIST)
 
 # Find all misclassified images in a given test set
 MISCLASSIFIED = get_misclassified_images(STANDARDIZED_LIST)
